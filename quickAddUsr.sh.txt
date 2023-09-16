@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#Variables 
+userName=$1 
+pw=$2 
+
+#Program 
+sudo useradd -p $pw $userName 
+
+#make drive 
+sudo mkdir /home/$userName 
+sudo chown $userName:www-data /home/$userName 
+sudo chmod 777 /home/$userName 
+sudo dd if=/dev/zero of=/home/$userName/$userName.img bs=2G count=1 
+
+sudo echo "so far so good" 
+
+sudo stat /home/$userName/$userName.img 
+
+echo "statx is done" 
+
+sudo mkfs -t ext4 /home/$userName/$userName.img > /home/tempFiles/uuid.txt 
+sudo grep -w "UUID: *-*-*-*-*" /home/tempFiles/uuid.txt > /home/tempFiles/UUID.txt 
+sudo awk '{print $2,$3}' /home/tempFiles/UUID.txt > /home/tempFiles/uuid.txt 
+sudo
+sudo echo "UUID.txt Made" 
+
+sudo echo "filesystem made" 
+
+sudo chown $userName:www-data /home/$userName/$userName.img 
+sudo chmod 777 /home/$userName/$userName.img 
+sudo mount -t ext4 /home/$userName/$userName.img /home/$userName 
+sudo mkdir /home/$userName/public_html 
+
+sudo echo "public_html made" 
+
+sudo chown $userName:www-data /home/$userName/public_html 
+sudo chmod 755 /home/$userName/public_html 
+sudo chmod 777 /etc/fstab 
+
+sudo echo "perms changed" 
+
+sudo cat /home/tempFiles/uuid.txt >> /etc/fstab 
+source /etc/fstab 
+sudo chmod 755 /etc/fstab 
+
+sudo echo "fstab modified"
+
+#set-up mailbox 
+mkdir /var/mail/$userName 

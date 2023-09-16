@@ -1,0 +1,8 @@
+dns_rdata_fromtext: /var/lib/bind/xtremville.net.hosts:33: near 'dPVo7N5Srbalspgh7GKIcctlXs13JFeDFG0r': bad base64 encoding
+dns_rdata_fromtext: /var/lib/bind/xtremville.net.hosts:38: near '3mBd527hAGmtvzhaeYrycsFCdsS+Sw6DjzeS': bad base64 encoding
+dns_rdata_fromtext: /var/lib/bind/xtremville.net.hosts:44: near 'fgSq64khWwl1ByvCmWHO0W7Odm9vKMC6KFOi': bad base64 encoding
+dns_rdata_fromtext: /var/lib/bind/xtremville.net.hosts:59: near 'lsE4tWeP82fGPlH1o42d2UxRHNiB8boCzijq': bad base64 encoding
+dns_rdata_fromtext: /var/lib/bind/xtremville.net.hosts:77: near 'p2RZuFLfcrukC9CrN8z+28FYGuIABR526Qfl': bad base64 encoding
+zone xtremville.net/IN: loading from master file /var/lib/bind/xtremville.net.hosts failed: bad base64 encoding
+zone xtremville.net/IN: not loaded due to errors.
+_default/xtremville.net/IN: bad base64 encoding
